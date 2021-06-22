@@ -13,18 +13,22 @@ if __name__ == "__main__":
     parser.add_argument('--gpu_id', type=int, default=0, help='gpu id')
 
     parser.add_argument('--dim', type=int, default=32, help='dimension of nodes and edges')
-    parser.add_argument('--agg_type', type=str, default='mean', help='aggregator from [mean,  sum, ngh]')
+    parser.add_argument('--agg_type', type=str, default='mean', help='aggregator from [mean, max_pool, gcn]')
     # parser.add_argument('--n_layer', type=int, default=2, help='number of layers')
     parser.add_argument('--u_ngh_num', type=str, default='10,5', help='the neighbor numbers of users on all layers')
     parser.add_argument('--i_ngh_num', type=str, default='10', help='the neighbor numbers of items on all layers')
+    parser.add_argument('--u_embed', type=str, default='68,68,68', help='the dimension of user embedding in each layer')
+    parser.add_argument('--i_embed', type=str, default='68,68,68', help='the dimension of item embedding in each layer')
+
     parser.add_argument('--epoch', type=int, default=20, help='number of epochs')
     parser.add_argument('--early_stop', type=int, default=10, help='early stop count threshold')
     parser.add_argument('--hash_size', type=int, default=25, help='hash size')
     parser.add_argument('--batch_size', type=int, default=256, help='batch size')
+    parser.add_argument('--encoding_schema', type=str, default='u-i-u', help='encoding schema')
 
     parser.add_argument('--lr', type=float, default=1e-3, help='learning rate')
     parser.add_argument('--lambda_', type=float, default=1e-1, help='lambda when calculating L2 loss')
-
+    parser.add_argument('--act', type=str, default='relu', help='activation')
     parser.add_argument('--seed', type=int, default=1111, help='seed')
 
     args = parser.parse_args()
